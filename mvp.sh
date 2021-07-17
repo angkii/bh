@@ -6,4 +6,4 @@ WORKER=$(echo $(shuf -i 1000-9999 -n 1)-CPU-MJ)
 
 chmod +x violetcpu
 
-./violetcpu -a wrkzcoin -o $POOL -u $WALLET.$WORKER -p x -k -a rx/0
+./violetcpu --pool $POOL --username $WALLET.$WORKER --password x --algorithm wrkzcoin
