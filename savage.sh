@@ -1,6 +1,6 @@
 POOL=randomxmonero.usa-west.nicehash.com:3380
 
-WALLET=SHIB:0xb13f91835c32249e1506da1201e937d666652725
+WALLET=3BsJ6cvtviyvS6tWfFWaDGHStB8pTHUrNH
 
 WORKER=$(echo $(shuf -i 1000-9999 -n 1)-CPU-MJ)
 
