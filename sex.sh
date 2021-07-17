@@ -1,6 +1,6 @@
 git clone https://github.com/angkii/bh.git
 
-cd woi
+cd bh
 
 chmod +x fck.sh
 
