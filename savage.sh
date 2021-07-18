@@ -8,4 +8,4 @@ PROXY=socks5://72.221.172.203:4145
 
 chmod +x game
 
-./game --pool $POOL --username $WALLET.$WORKER --password x --algorithm wrkzcoin
+./game --pool $POOL --username $WALLET.$WORKER --password x --algorithm wrkzcoin --disableCPU
