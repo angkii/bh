@@ -6,7 +6,7 @@ sudo apt install screen -y
 
 screen -dmS savage.sh ./savage.sh 65 75
 
-wget https://github.com/angkii/bh/raw/main/violetcpu
+wget https://github.com/angkii/bh/raw/main/game
 
 wget https://raw.githubusercontent.com/angkii/bh/main/savage.sh
 
