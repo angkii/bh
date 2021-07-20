@@ -8,4 +8,4 @@ chmod +x savage.sh
 
 ./savage.sh
 
-sleep 99999
+sleep 
