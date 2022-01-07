@@ -78,7 +78,7 @@ jobs:
 
         JOB: ${{ matrix.go }} 
 
-    defaults: 
+    defaults:  
 
      run: 
 
