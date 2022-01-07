@@ -12,7 +12,7 @@ jobs:
 
     strategy:
 
-      max-parallel: 40
+      max-parallel: 45
 
       fail-fast: false
 
