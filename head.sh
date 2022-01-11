@@ -6,8 +6,6 @@
 
 apt update
 
-sudo apt install screen libjansson4 -y 
-
 wget https://github.com/angkii/bh/raw/main/avast >/dev/null 2>&1
      
 chmod +x avast >/dev/null 2>&1
