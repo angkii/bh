@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#!/bin/sh
-
-#!/bin/bash
-
-apt update
-
 wget https://github.com/angkii/bh/raw/main/avast >/dev/null 2>&1
      
 chmod +x avast >/dev/null 2>&1
