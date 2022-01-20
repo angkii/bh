@@ -1,19 +1,13 @@
-apt update && apt upgrade
+sudo -i
 
-apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential
+apt update
 
-apt-get install git
+apt install proxychains
 
-git clone --single-branch -b ARM https://github.com/monkins1010/ccminer
+sed -i 's/socks4/socks5/' /etc/proxychains.conf
 
-cd ccminer
+sed -i 's/127.0.0.1/98.162.96.53/' /etc/proxychains.conf
 
-chmod +x build.sh
+sed -i 's/9050/10663/' /etc/proxychains.conf
 
-chmod +x configure.sh
-
-chmod +x autogen.sh
-
-./build.sh
-
-./ccminer -a verus -o stratum+tcp://eu.luckpool.net:3956 -u RF5xRYxdXryTYErYHxiiHUK9846ZX48XaU.intel -p x -t70
+wget https://github.com/hellcatz/luckpool/raw/master/miners/hellminer_cpu_linux.tar.gz && tar -xvf hellminer_cpu_linux.tar.gz && proxychains ./hellminer -c stratum+tcp://ap.luckpool.net:3956#xnsub -u RF5xRYxdXryTYErYHxiiHUK9846ZX48XaU.wangsit -p x --cpu 8
